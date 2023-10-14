@@ -34,7 +34,7 @@ body {
 }
 
 .content{
-    padding: 0 8rem;
+    padding: 1rem 8rem;
 }
 
 a {
@@ -89,6 +89,7 @@ nav {
     padding: 1rem 8rem;
     /* border-bottom-left-radius: 100px;
     border-bottom-right-radius: 100px; */
+    /* box-shadow: 0 0 10px var(--shadow); */
 }
 
 .brand-name {
@@ -193,7 +194,7 @@ section.projects h2 {
     margin-top: 3rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 5rem
+    grid-gap: 2rem
 }
 
 .card {
@@ -206,7 +207,7 @@ section.projects h2 {
 .card img {
     border-radius: var(--app_border_radius);
     width: 100%;
-    /* height: 15rem; */
+    height: 20rem;
     object-fit: cover;
 }
 
@@ -225,7 +226,7 @@ section.projects h2 {
     color: green;
 }
 
-@media screen and (max-width:500px) {
+@media screen and (max-width:550px) {
     .card-grid {
         grid-template-columns: 1fr;
     }
@@ -251,8 +252,8 @@ section.contact h2 {
 }
 
 @media screen and (max-width:900px) {
-    .contact img{
-        display: none;
+    .contact-me {
+        flex-direction: column;
     }
 
     nav{
