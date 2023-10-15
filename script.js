@@ -1,28 +1,3 @@
-
-const lightModeIcon  = document.querySelector(".light-mode-icon");
-const darkModeIcon  = document.querySelector(".dark-mode-icon");
-let currentTheme = localStorage.getItem('theme');
-
-function switchTheme() {
-    if (currentTheme === "dark") {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-        currentTheme = "light";
-        lightModeIcon.style.display = "none";
-        darkModeIcon.style.display = "block";
-    } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-        currentTheme = "dark";
-        lightModeIcon.style.display = "block";
-        darkModeIcon.style.display = "none";
-    }
-    if (currentTheme) {
-        document.documentElement.setAttribute('data-theme', currentTheme);
-    }
-}
-
-
 const projectsData = [
     {
         title: "BESAFE: Blockchain and Encryption for Secure Access to Files and Electronic Data",
@@ -57,6 +32,78 @@ const projectsData = [
     },
 ];
 
+const lightModeIcon  = document.querySelector(".light-mode-icon");
+const darkModeIcon  = document.querySelector(".dark-mode-icon");
+let currentTheme = localStorage.getItem('theme');
+
+const menuIcon = document.querySelector('.menu-icon');
+const closeIcon = document.querySelector('.close-icon');
+const navigation = document.querySelector('.navigation');
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    menuIcon.addEventListener('click', function () {
+        menuIcon.style.display = 'none';
+        closeIcon.style.display = 'block';
+        navigation.style.display = 'flex';
+    });
+
+    closeIcon.addEventListener('click', function () {
+        menuIcon.style.display = 'block';
+        closeIcon.style.display = 'none';
+        navigation.style.display = 'none';
+    });
+
+    document.addEventListener('touchstart', function (event) {
+        if (!event.target.closest('.nav-options') && closeIcon.style.display === 'block') {
+            menuIcon.style.display = 'block';
+            closeIcon.style.display = 'none';
+            navigation.style.display = 'none';
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const navigationLinks = document.querySelectorAll('.navigation a');
+
+    navigationLinks.forEach(function (link) {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            window.scrollTo({
+                top: targetElement.offsetTop - document.querySelector('nav').offsetHeight,
+                behavior: 'smooth'
+            });
+            if (closeIcon.style.display === 'block') {
+                menuIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
+                navigation.style.display = 'none';
+            }
+        });
+    });
+});
+
+function switchTheme() {
+    if (currentTheme === "dark") {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+        currentTheme = "light";
+        lightModeIcon.style.display = "none";
+        darkModeIcon.style.display = "block";
+    } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        currentTheme = "dark";
+        lightModeIcon.style.display = "block";
+        darkModeIcon.style.display = "none";
+    }
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+    }
+}
 
 function openLink(url) {
     window.open(url, "_blank");
@@ -88,57 +135,6 @@ function generateProjectCards() {
     });
 }
 
-
-const menuIcon = document.querySelector('.menu-icon');
-const closeIcon = document.querySelector('.close-icon');
-const navigation = document.querySelector('.navigation');
-document.addEventListener('DOMContentLoaded', function () {
-
-    menuIcon.addEventListener('click', function () {
-        menuIcon.style.display = 'none';
-        closeIcon.style.display = 'block';
-        navigation.style.display = 'flex';
-    });
-
-    closeIcon.addEventListener('click', function () {
-        menuIcon.style.display = 'block';
-        closeIcon.style.display = 'none';
-        navigation.style.display = 'none';
-    });
-
-    document.addEventListener('touchstart', function (event) {
-        if (!event.target.closest('.nav-options') && closeIcon.style.display === 'block') {
-            menuIcon.style.display = 'block';
-            closeIcon.style.display = 'none';
-            navigation.style.display = 'none';
-        }
-    });
-});
-
-
-document.addEventListener('DOMContentLoaded', function () {
-    const navigationLinks = document.querySelectorAll('.navigation a');
-
-    navigationLinks.forEach(function (link) {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-
-            window.scrollTo({
-                top: targetElement.offsetTop - document.querySelector('nav').offsetHeight,
-                behavior: 'smooth'
-            });
-            if (closeIcon.style.display === 'block') {
-                menuIcon.style.display = 'block';
-                closeIcon.style.display = 'none';
-                navigation.style.display = 'none';
-            }
-        });
-    });
-});
-
 function sendEmail() {
     const to = "eissafaheem@gmail.com";
     const subject = encodeURIComponent(document.getElementById('subject').value);
@@ -146,7 +142,5 @@ function sendEmail() {
     window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
 }
 
-
-
 generateProjectCards();
-// switchTheme()
+

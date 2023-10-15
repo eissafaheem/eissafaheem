@@ -1,8 +1,6 @@
 # portfolio_v3.0.0
 
 
-
-change resume
-light dark mode
+footer linkedin github email 
 butterfly
 eyes
