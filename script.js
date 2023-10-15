@@ -120,7 +120,7 @@ function generateProjectCards() {
 function sendEmail() {
     const to = "eissafaheem@gmail.com";
     const subject = encodeURIComponent(document.getElementById('subject').value);
-    const body = encodeURIComponent(document.getElementById('body').value);
+    const body = encodeURIComponent(document.getElementById('message').value);
     window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
 }
 
