@@ -267,6 +267,17 @@ section.contact h2 {
     padding: 1rem;
 }
 
+footer{
+    margin-top: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background-color: var(--app_background_2_color);
+    gap: 0.5rem;
+    border: 1px solid var(--app_background_2_color);
+}
+
 @media screen and (max-width:700px) {
 
     .navigation {
