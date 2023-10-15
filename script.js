@@ -1,44 +1,18 @@
-const projectsData = [
-    {
-        title: "BESAFE: Blockchain and Encryption for Secure Access to Files and Electronic Data",
-        imgSrc: "./assets/projects/besafe2.png",
-        description: `Final year B. Tech project, innovative solution addresses critical need for secure storage and access of data.
-        Acts as a wrapper over google drive to store encrypted files, hash of file is stored in Ethereum blockchain.
-        User can still use their existing drive whilst enjoying safeguarding of sensitive information.`,
-        sourceCodeLink: "https://github.com/orgs/BeSafe-Org/repositories",
-        liveDemoLink: "https://github.com/BeSafe-Org/besafe-angular#besafe-blockchain-and-encryption-for-secure-access-to-files-and-electronic-data"
-    },
-    {
-        title: "Instantly: Instant Video Calling App",
-        imgSrc: "./assets/projects/instantly.png",
-        description: `Users can create or join an instant meeting, without going through lengthy signing processes in times of urgency.Uses WebRTC for browser-to-browser connection, requiring server only for establishing connection.`,
-        sourceCodeLink: "https://github.com/eissafaheem/instantly-video-calling-app",
-        liveDemoLink: "https://github.com/eissafaheem/instantly-video-calling-app#instantly-video-calling-app"
-    },
-    {
-        title: "Meow: Cats App",
-        imgSrc: "./assets/projects/meow.png",
-        description: `Developed as a fun way to display skills, users can unlock new cat avatars by collecting 'Paw-ints' by
-        meowing in their conversations. Users can have a one to one as well as group chat, members can be added and removed from group.`,
-        sourceCodeLink: "https://github.com/eissafaheem?tab=repositories&q=cats-app&type=&language=&sort=",
-        liveDemoLink: "https://github.com/eissafaheem/cats-app-react#meow-realtime-chat-app-preview"
-    },
-    {
-        title: "Autohunt",
-        imgSrc: "./assets/projects/autohunt.png",
-        description: "Autohunt is a car selling application which has a landing page, a search page, compare section, services provided, testimonials, about us and contact section. It is developed using React, typescript and css.",
-        sourceCodeLink: "https://github.com/eissafaheem/autohunt_react_app",
-        liveDemoLink: "https://github.com/eissafaheem/autohunt_react_app#autohunt"
-    },
-];
-
 const lightModeIcon  = document.querySelector(".light-mode-icon");
 const darkModeIcon  = document.querySelector(".dark-mode-icon");
 let currentTheme = localStorage.getItem('theme');
+var avatar = document.querySelector('.avatar');
+var eyes = document.querySelector('.eyes_container');
+var eye1 = document.getElementById("eye1");
+var eye2 = document.getElementById("eye2");
+var isVisible = true;
+var isMouseMoved = false;
 
 const menuIcon = document.querySelector('.menu-icon');
 const closeIcon = document.querySelector('.close-icon');
 const navigation = document.querySelector('.navigation');
+
+window.addEventListener("mousemove", startEyeMovement);
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -175,6 +149,72 @@ function move(element) {
 function generateRandomNumber() {
     return Math.floor(Math.random() * 100) + 0;
 }
+
+function startEyeMovement() {
+    if (isMouseMoved === false) {
+        toggleEyes();
+    }
+    rotateEye(eye1);
+    rotateEye(eye2);
+}
+
+function rotateEye(eye){
+    if (eye) {
+        var eyeRect = eye.getBoundingClientRect();
+        var x = eyeRect.left + (eyeRect.width / 2);
+        var y = eyeRect.top + (eyeRect.height / 2);
+        var rad = Math.atan2(event.pageX - x, event.pageY - y);
+        var rot = (rad * (180 / Math.PI) * -1) + 180;
+        eye.style.transform = "rotate(" + rot + "deg)";
+    }
+}
+
+function toggleEyes() {
+    if (isVisible && isMouseMoved === false) {
+        avatar.appendChild(eyes);
+        isVisible = false;
+        isMouseMoved = true;
+        setTimeout(() => {
+            avatar.removeChild(eyes);
+            isVisible = true;
+            isMouseMoved = false;
+        }, 1000);
+    }
+}
+
+const projectsData = [
+    {
+        title: "BESAFE: Blockchain and Encryption for Secure Access to Files and Electronic Data",
+        imgSrc: "./assets/projects/besafe2.png",
+        description: `Final year B. Tech project, innovative solution addresses critical need for secure storage and access of data.
+        Acts as a wrapper over google drive to store encrypted files, hash of file is stored in Ethereum blockchain.
+        User can still use their existing drive whilst enjoying safeguarding of sensitive information.`,
+        sourceCodeLink: "https://github.com/orgs/BeSafe-Org/repositories",
+        liveDemoLink: "https://github.com/BeSafe-Org/besafe-angular#besafe-blockchain-and-encryption-for-secure-access-to-files-and-electronic-data"
+    },
+    {
+        title: "Instantly: Instant Video Calling App",
+        imgSrc: "./assets/projects/instantly.png",
+        description: `Users can create or join an instant meeting, without going through lengthy signing processes in times of urgency.Uses WebRTC for browser-to-browser connection, requiring server only for establishing connection.`,
+        sourceCodeLink: "https://github.com/eissafaheem/instantly-video-calling-app",
+        liveDemoLink: "https://github.com/eissafaheem/instantly-video-calling-app#instantly-video-calling-app"
+    },
+    {
+        title: "Meow: Cats App",
+        imgSrc: "./assets/projects/meow.png",
+        description: `Developed as a fun way to display skills, users can unlock new cat avatars by collecting 'Paw-ints' by
+        meowing in their conversations. Users can have a one to one as well as group chat, members can be added and removed from group.`,
+        sourceCodeLink: "https://github.com/eissafaheem?tab=repositories&q=cats-app&type=&language=&sort=",
+        liveDemoLink: "https://github.com/eissafaheem/cats-app-react#meow-realtime-chat-app-preview"
+    },
+    {
+        title: "Autohunt",
+        imgSrc: "./assets/projects/autohunt.png",
+        description: "Autohunt is a car selling application which has a landing page, a search page, compare section, services provided, testimonials, about us and contact section. It is developed using React, typescript and css.",
+        sourceCodeLink: "https://github.com/eissafaheem/autohunt_react_app",
+        liveDemoLink: "https://github.com/eissafaheem/autohunt_react_app#autohunt"
+    },
+];
 
 generateProjectCards();
 
