@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
         navigation.style.display = 'none';
     });
 
-    document.addEventListener('click', function (event) {
+    document.addEventListener('touchstart', function (event) {
         if (!event.target.closest('.nav-options') &&  closeIcon.style.display === 'block') {
             menuIcon.style.display = 'block';
             closeIcon.style.display = 'none';
