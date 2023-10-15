@@ -1,5 +1,5 @@
-const lightModeIcon  = document.querySelector(".light-mode-icon");
-const darkModeIcon  = document.querySelector(".dark-mode-icon");
+const lightModeIcon = document.querySelector(".light-mode-icon");
+const darkModeIcon = document.querySelector(".dark-mode-icon");
 let currentTheme = localStorage.getItem('theme');
 var avatar = document.querySelector('.avatar');
 var eyes = document.querySelector('.eyes_container');
@@ -60,27 +60,31 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-function switchTheme() {
-    if (currentTheme === "dark") {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-        currentTheme = "light";
-        lightModeIcon.style.display = "none";
-        darkModeIcon.style.display = "block";
-        menuIcon.src = "./assets/menu-icon-light.svg";
-        closeIcon.src = "./assets/close-icon-light.svg";
-    } else {
+function applyTheme(theme) {
+    if (theme === "dark") {
         document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-        currentTheme = "dark";
         lightModeIcon.style.display = "block";
         darkModeIcon.style.display = "none";
         menuIcon.src = "./assets/menu-icon-dark.svg";
         closeIcon.src = "./assets/close-icon-dark.svg";
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        lightModeIcon.style.display = "none";
+        darkModeIcon.style.display = "block";
+        menuIcon.src = "./assets/menu-icon-light.svg";
+        closeIcon.src = "./assets/close-icon-light.svg";
     }
-    if (currentTheme) {
-        document.documentElement.setAttribute('data-theme', currentTheme);
+}
+
+function switchTheme() {
+    if (currentTheme === "dark") {
+        localStorage.setItem('theme', 'light');
+        currentTheme = "light";
+    } else {
+        currentTheme = "dark";
+        localStorage.setItem('theme', 'dark');
     }
+    applyTheme(currentTheme);
 }
 
 function openLink(url) {
@@ -162,7 +166,7 @@ function startEyeMovement() {
     rotateEye(eye2);
 }
 
-function rotateEye(eye){
+function rotateEye(eye) {
     if (eye) {
         var eyeRect = eye.getBoundingClientRect();
         var x = eyeRect.left + (eyeRect.width / 2);
@@ -222,3 +226,4 @@ const projectsData = [
 
 generateProjectCards();
 toggleEyes();
+applyTheme(currentTheme);
