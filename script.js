@@ -217,4 +217,4 @@ const projectsData = [
 ];
 
 generateProjectCards();
-
+toggleEyes();
