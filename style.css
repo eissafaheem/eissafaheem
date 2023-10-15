@@ -12,6 +12,8 @@
     --app_background_2_color_dark: #333333;
     --app_border_color_dark: #CCCCCC;
     --shadow_dark: rgba(255, 255, 255, 0.26);
+    --app_background_opacity_color-dark: #000000fa;
+
 }
 
 [data-theme='dark'] {
@@ -19,7 +21,8 @@
     --app_background_color: var(--app_background_color_dark);
     --app_background_2_color: var(--app_background_2_color_dark);
     --app_border_color: var(--app_border_color_dark);
-    --shadow: var(--shadow_dark)
+    --shadow: var(--shadow_dark);
+    --app_background_opacity_color: var(--app_background_opacity_color-dark);
 }
 
 * {
@@ -103,6 +106,7 @@ nav {
     top: 0;
     background-color: var(--app_background_color);
     padding: 1rem 8rem;
+    z-index: 2;
 }
 
 .nav-options {
@@ -267,7 +271,7 @@ section.contact h2 {
     padding: 1rem;
 }
 
-footer{
+footer {
     margin-top: 5rem;
     display: flex;
     align-items: center;
@@ -305,6 +309,7 @@ footer{
 
 .avatar {
     position: relative;
+    z-index: 1;
 }
 
 .eyes_container {
@@ -346,6 +351,7 @@ footer{
         flex-direction: column;
         align-items: center;
         z-index: 1;
+        padding-bottom: 1rem;
     }
 
     .menu-icon {

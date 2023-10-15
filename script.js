@@ -67,12 +67,16 @@ function switchTheme() {
         currentTheme = "light";
         lightModeIcon.style.display = "none";
         darkModeIcon.style.display = "block";
+        menuIcon.src = "./assets/menu-icon-light.svg";
+        closeIcon.src = "./assets/close-icon-light.svg";
     } else {
         document.documentElement.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark');
         currentTheme = "dark";
         lightModeIcon.style.display = "block";
         darkModeIcon.style.display = "none";
+        menuIcon.src = "./assets/menu-icon-dark.svg";
+        closeIcon.src = "./assets/close-icon-dark.svg";
     }
     if (currentTheme) {
         document.documentElement.setAttribute('data-theme', currentTheme);
