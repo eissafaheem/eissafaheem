@@ -130,5 +130,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+function sendEmail() {
+    const to = "eissafaheem@gmail.com";
+    const subject = encodeURIComponent(document.getElementById('subject').value);
+    const body = encodeURIComponent(document.getElementById('body').value);
+    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+}
+
+
+
 generateProjectCards();
 // switchTheme()
