@@ -142,5 +142,39 @@ function sendEmail() {
     window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
 }
 
+function generateBird(event) {
+    console.log("object")
+    const container = document.getElementById('body');
+    const birdBody = document.createElement('div');
+    birdBody.className = 'birdBody';
+
+    const x = event.pageX;
+    const y = event.pageY;
+    birdBody.style.left = x + 'px';
+    birdBody.style.top = y + 'px';
+    container.appendChild(birdBody);
+
+    const birdWings = document.createElement('div');
+    birdWings.className = 'birdWings';
+    birdBody.appendChild(birdWings);
+
+    setTimeout(() => {
+        move(birdBody);
+    }, 200);
+
+    setTimeout(() => {
+        container.removeChild(birdBody);
+    }, 6000);
+}
+
+function move(element) {
+    element.style.top = 0 + "vh";
+    element.style.left = generateRandomNumber() + "vw";
+}
+
+function generateRandomNumber() {
+    return Math.floor(Math.random() * 100) + 0;
+}
+
 generateProjectCards();
 

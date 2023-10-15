@@ -278,6 +278,31 @@ footer{
     border: 1px solid var(--app_background_2_color);
 }
 
+.birdBody {
+    background-color: cyan;
+    height: 1rem;
+    width: 0.5rem;
+    position: absolute;
+    transition: top 7s, left 7s;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.birdWings {
+    position: absolute;
+    transition: top 5s, left 5s;
+    width: 0;
+    height: 0;
+    border-right: 1rem solid yellow;
+    border-left: 1rem solid yellow;
+    border-top: 0.5rem solid transparent;
+    border-bottom: 0.5rem solid transparent;
+    background-color: transparent;
+    animation: flap 0.5s infinite;
+}
+
 @media screen and (max-width:700px) {
 
     .navigation {
