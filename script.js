@@ -58,18 +58,22 @@ function generateProjectCards() {
 
     projectsData.forEach(project => {
         const card = document.createElement('div');
-        card.classList.add('card');
         card.innerHTML = `
-        <img src="${project.imgSrc}" alt="">
-        <div class="project-info">
-                <h3>${project.title}</h3>
-                <p>${project.description}</p>
-            <div class="links">
-                <button onclick="openLink('${project.sourceCodeLink}')">Source Code</button>
-                <button onclick="openLink('${project.liveDemoLink}')">Preview</button>
-            </div>
-        </div>
-    `;
+        <div class="card-container">
+                    <div class="card">
+                        <div class="projects-data">
+                            <img src="${project.imgSrc}" alt="">
+                            <div class="project-info">
+                                <h3>${project.title}</h3>
+                                <p>${project.description}</p>
+                            </div>
+                        </div>
+                        <div class="links">
+                            <button onclick="openLink('${project.sourceCodeLink}')">Source Code</button>
+                            <button onclick="openLink('${project.liveDemoLink}')">Preview</button>
+                        </div>
+                    </div>
+                </div>`;
 
         projectGrid.appendChild(card);
     });
@@ -94,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.addEventListener('touchstart', function (event) {
-        if (!event.target.closest('.nav-options') &&  closeIcon.style.display === 'block') {
+        if (!event.target.closest('.nav-options') && closeIcon.style.display === 'block') {
             menuIcon.style.display = 'block';
             closeIcon.style.display = 'none';
             navigation.style.display = 'none';
@@ -103,11 +107,11 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const navigationLinks = document.querySelectorAll('.navigation a');
 
-    navigationLinks.forEach(function(link) {
-        link.addEventListener('click', function(e) {
+    navigationLinks.forEach(function (link) {
+        link.addEventListener('click', function (e) {
             e.preventDefault();
 
             const targetId = this.getAttribute('href').substring(1);
