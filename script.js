@@ -1,18 +1,27 @@
-const currentTheme = localStorage.getItem('theme');
 
-function switchTheme(e) {
-    if (currentTheme === "light") {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-    } else {
+const lightModeIcon  = document.querySelector(".light-mode-icon");
+const darkModeIcon  = document.querySelector(".dark-mode-icon");
+let currentTheme = localStorage.getItem('theme');
+
+function switchTheme() {
+    if (currentTheme === "dark") {
         document.documentElement.setAttribute('data-theme', 'light');
         localStorage.setItem('theme', 'light');
+        currentTheme = "light";
+        lightModeIcon.style.display = "none";
+        darkModeIcon.style.display = "block";
+    } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        currentTheme = "dark";
+        lightModeIcon.style.display = "block";
+        darkModeIcon.style.display = "none";
+    }
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
     }
 }
 
-if (currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-}
 
 const projectsData = [
     {

@@ -34,6 +34,33 @@ body {
     background-color: var(--app_background_color);
 }
 
+.mode-container{
+    position: fixed;
+    bottom: 15%;
+    left: 0;
+    /* border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    background-color: red; */
+    cursor: pointer;
+}
+
+.mode-container img{
+    padding: 0.5rem;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    background-color: var(--app_background_2_color);
+    /* border-radius: 50%; */
+    /* margin: 0.5rem; */
+}
+
+.dark-mode-icon{
+    display: none;
+}
+
+.light-mode-icon{
+    display: block;
+}
+
 .content {
     padding: 1rem 8rem;
 }
@@ -244,8 +271,8 @@ section.projects h2 {
 .card img {
     border-radius: var(--app_border_radius);
     width: 100%;
-    height: 20rem;
-    object-fit: cover;
+    /* height: 20rem; */
+    /* object-fit: cover; */
 }
 
 .card .project-info {
