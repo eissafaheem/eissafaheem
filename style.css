@@ -223,7 +223,7 @@ section.projects h2 {
 }
 
 .card .links a {
-    color: green;
+    color: var(--app_border_color);
 }
 
 @media screen and (max-width:550px) {
