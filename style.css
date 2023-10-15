@@ -54,6 +54,8 @@ input {
     border: none;
     border-radius: var(--app_border_radius);
     padding: 0.5rem 1rem;
+    background-color: var(--app_background_color);
+    border: 1px solid var(--app_border_color);
 }
 
 a {

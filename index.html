@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Eissa Faheem</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
 </head>
 
 <body onclick="generateBird(event)" id="body">
@@ -128,10 +129,10 @@
                         </label>
 
                         <label for="subject">Subject:</label>
-                        <input type="text" id="subject" name="subject" required>
+                        <input type="text" id="subject" name="subject" required placeholder="Enter subject here...">
 
                         <label for="body">Body:</label>
-                        <textarea id="body" name="body" rows="4" cols="50" required></textarea>
+                        <textarea id="body" name="body" rows="4" cols="50" required placeholder="Enter your message here..."></textarea>
 
                         <button type="reset" onclick="sendEmail()">Send Email</button>
                     </form>
