@@ -10,19 +10,23 @@
 
 <body>
     <nav>
-        <div class="brand-name">
-            Eissa Faheem
-        </div>
-        <div class="navigation">
-            <span>Home</span>
-            <span>Experience</span>
-            <span>Projects</span>
-            <span>Contact</span>
+        <div class="nav-options">
+            <div class="brand-name">
+                Eissa Faheem
+            </div>
+            <img src="./assets/menu-icon.svg" alt="" class="menu-icon">
+            <img src="./assets/close-icon.svg" alt="" class="close-icon" style="display: none;">
+            <div class="navigation">
+                <a href="#home">Home</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
         </div>
     </nav>
     <div class="content">
 
-        <section class="home">
+        <section class="home" id="home">
             <div class="my-info">
                 <p>
                     Hii, I am Eissa,
@@ -33,10 +37,11 @@
                     Welcome to my Portfolio..!
                 </p>
             </div>
-            <button class=".btn">Resume</button>
+            <button
+                onclick="openLink(`https://drive.google.com/file/d/1Cx5q10dOkxTqQXGLKCPMjuZ_ho-044Jq/view?usp=sharing`)">Resume</button>
         </section>
 
-        <section class="experience">
+        <section class="experience" id="experience">
             <h2>experience.</h2>
             <ul>
                 <li>
@@ -51,11 +56,12 @@
                                 Jan, 2023 - Present
                             </span>
                         </h3>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad, cupiditate placeat veritatis
-                            animi dolorem et repellendus facilis voluptate voluptas, natus nesciunt, quibusdam alias hic
-                            ut reprehenderit id totam enim sit sequi? Natus inventore rerum eveniet, eos molestias
-                            libero, illum doloribus laudantium quod quo quae adipisci corporis vitae eius molestiae
-                            animi!</p>
+                        <p>Development of Zunu Social, an encrypted social media platform built using React and
+                            TypeScript.
+                            Currently working on Zunu Messages, an android mobile application for encrypted text
+                            messaging using
+                            React Native, TypeScript. <br>
+                            Skills used: React, TypeScript, React Native, Java, OOPS.</p>
                     </div>
                 </li>
                 <li>
@@ -63,31 +69,38 @@
                         <h3>
                             <span>
                                 <a href="https://ziroh.com/zunu/" target="_blank">
-                                    Ziroh Labs, Bangalore: Member of Technical Staff
+                                    Ziroh Labs, Bangalore: Member of Technical Staff Intern
                                 </a>
                             </span>
                             <span>
-                                Jan, 2023 - Present
+                                Jul, 2022 - Dec 2022
                             </span>
                         </h3>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad, cupiditate placeat veritatis
-                            animi dolorem et repellendus facilis voluptate voluptas, natus nesciunt, quibusdam alias hic
-                            ut reprehenderit id totam enim sit sequi? Natus inventore rerum eveniet, eos molestias
-                            libero, illum doloribus laudantium quod quo quae adipisci corporis vitae eius molestiae
-                            animi!</p>
+                        <p>Development of Zunu Enterprise Vault, build using Angular, which leverages enterprises to use
+                            Ziroh
+                            products within their organizational domain.
+                            Enhanced the application's performance by implementing a web worker for parallel processing
+                            of heavy
+                            encryption computations.
+                            Service Worker for efficient asset caching and implemented Angular Universal for server-side
+                            rendering.
+                            Optimizing the application loading time and working by up to 60%.
+                            <br>
+                            Skills used: Angular, Typescript, OOPS.
+                        </p>
                     </div>
                 </li>
 
             </ul>
         </section>
 
-        <section class="projects">
+        <section class="projects" id="projects">
             <h2>projects.</h2>
             <div class="card-grid">
             </div>
         </section>
 
-        <section class="contact">
+        <section class="contact" id="contact">
             <h2>contact.</h2>
             <div class="contact-me">
                 <img src="./assets/contact-me.svg" alt="">

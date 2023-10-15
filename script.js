@@ -16,7 +16,7 @@ if (currentTheme) {
 
 const projectsData = [
     {
-        title: "BESAFE: Blockchain",
+        title: "BESAFE: Blockchain and Encryption for Secure Access to Files and Electronic Data",
         imgSrc: "/assets/projects/besafe2.png",
         description: `Final year B. Tech project, innovative solution addresses critical need for secure storage and access of data.
         Acts as a wrapper over google drive to store encrypted files, hash of file is stored in Ethereum blockchain.
@@ -59,23 +59,72 @@ function generateProjectCards() {
     projectsData.forEach(project => {
         const card = document.createElement('div');
         card.classList.add('card');
-
         card.innerHTML = `
-            <img src="${project.imgSrc}" alt="">
-            <div class="project-info">
+        <img src="${project.imgSrc}" alt="">
+        <div class="project-info">
                 <h3>${project.title}</h3>
                 <p>${project.description}</p>
-                <div class="links">
-                    <button><a href="${project.sourceCodeLink}" target="_blank">Source Code</a></button>
-                    <button><a href="${project.liveDemoLink}" target="_blank">Live Demo</a></button>
-                </div>
+            <div class="links">
+                <button onclick="openLink('${project.sourceCodeLink}')">Source Code</button>
+                <button onclick="openLink('${project.liveDemoLink}')">Preview</button>
             </div>
-        `;
+        </div>
+    `;
 
         projectGrid.appendChild(card);
     });
 }
 
 
+const menuIcon = document.querySelector('.menu-icon');
+const closeIcon = document.querySelector('.close-icon');
+const navigation = document.querySelector('.navigation');
+document.addEventListener('DOMContentLoaded', function () {
+
+    menuIcon.addEventListener('click', function () {
+        menuIcon.style.display = 'none';
+        closeIcon.style.display = 'block';
+        navigation.style.display = 'flex';
+    });
+
+    closeIcon.addEventListener('click', function () {
+        menuIcon.style.display = 'block';
+        closeIcon.style.display = 'none';
+        navigation.style.display = 'none';
+    });
+
+    document.addEventListener('click', function (event) {
+        if (!event.target.closest('.nav-options') &&  closeIcon.style.display === 'block') {
+            menuIcon.style.display = 'block';
+            closeIcon.style.display = 'none';
+            navigation.style.display = 'none';
+        }
+    });
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const navigationLinks = document.querySelectorAll('.navigation a');
+
+    navigationLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            window.scrollTo({
+                top: targetElement.offsetTop - document.querySelector('nav').offsetHeight,
+                behavior: 'smooth'
+            });
+            if (closeIcon.style.display === 'block') {
+                menuIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
+                navigation.style.display = 'none';
+            }
+        });
+    });
+});
+
 generateProjectCards();
-switchTheme()
+// switchTheme()

@@ -5,6 +5,7 @@
     --app_border_color: #474306;
     --app_border_radius: 6px;
     --shadow: rgba(0, 0, 0, 0.26);
+    --app_background_opacity_color: #fbf8ccfa;
 
     --font_color_dark: #ffffff;
     --app_background_color_dark: #000000;
@@ -33,7 +34,7 @@ body {
     background-color: var(--app_background_color);
 }
 
-.content{
+.content {
     padding: 1rem 8rem;
 }
 
@@ -52,13 +53,15 @@ button {
     border-radius: var(--app_border_radius);
     padding: 0.5rem 1rem;
     color: var(--app_border_color);
-    position: relative;
+    /* position: relative; */
     cursor: pointer;
     transition: 0.2s;
+    /* z-index: 2; */
+    box-shadow: 5px 5px 0 var(--app_background_2_color);
 }
 
 
-button::before {
+/* button::before {
     transition: 0.2s;
     background-color: var(--app_background_2_color);
     height: 100%;
@@ -69,20 +72,18 @@ button::before {
     content: "";
     border-radius: var(--app_border_radius);
     z-index: -1;
-}
+} */
 
-button:hover::before {
+/* button:hover::before {
     top: 0;
     left: 0;
-}
+} */
 
 button:hover {
     box-shadow: 0 2px 5px 0;
 }
 
 nav {
-    display: flex;
-    justify-content: space-between;
     position: sticky;
     top: 0;
     background-color: var(--app_background_color);
@@ -92,14 +93,38 @@ nav {
     /* box-shadow: 0 0 10px var(--shadow); */
 }
 
+.nav-options{
+    display: flex;
+    justify-content: space-between;
+}
+
 .brand-name {
     font-weight: bolder;
 }
 
 .navigation {
     display: flex;
-    gap: 1rem
+    gap: 2rem
 }
+
+.navigation a {
+    cursor: pointer;
+    transition: 0.2s ease;
+    padding: 0.5rem 1rem;
+}
+
+.menu-icon{
+    display: none;
+}
+
+.navigation a:hover {
+    /* color: var(--app_background_2_color); */
+    box-shadow: 0 0 5px var(--app_background_2_color);
+    border-radius: var(--app_border_radius);
+}
+
+
+
 
 /* home */
 section.home {
@@ -165,16 +190,7 @@ section.experience ul li:not(:last-child) {
     margin-bottom: 5rem;
 }
 
-@media screen and (max-width:500px) {
-    section.experience ul li h3 {
-        font-size: 1rem;
-    }
 
-    section.experience ul {
-        margin-left: 2rem;
-
-    }
-}
 
 /*projects  */
 
@@ -226,11 +242,6 @@ section.projects h2 {
     color: var(--app_border_color);
 }
 
-@media screen and (max-width:550px) {
-    .card-grid {
-        grid-template-columns: 1fr;
-    }
-}
 
 
 
@@ -247,23 +258,61 @@ section.contact h2 {
     gap: 2rem;
 }
 
-.contact a{
+.contact a {
     text-decoration: underline;
 }
+
+
+@media screen and (max-width:700px) {
+
+    nav{
+    }
+
+    .nav-options {
+        /* position: relative;
+        z-index: 5; */
+    }
+
+    .navigation {
+        display: none;
+        position: absolute;
+        background-color: var(--app_background_opacity_color);
+        top: 3rem;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1;
+    }
+
+    .menu-icon{
+        display: block;
+    }
+
+    section.experience ul li h3 {
+        font-size: 1rem;
+    }
+
+    section.experience ul {
+        margin-left: 2rem;
+
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 
 @media screen and (max-width:900px) {
     .contact-me {
         flex-direction: column;
     }
 
-    nav{
+    nav {
         padding: 1rem;
     }
-}
 
-
-
-@media screen and (max-width:900px) {
     .content {
         padding: 1rem;
     }
