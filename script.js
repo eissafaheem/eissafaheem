@@ -1,7 +1,7 @@
 const projectsData = [
     {
         title: "BESAFE: Blockchain and Encryption for Secure Access to Files and Electronic Data",
-        imgSrc: "assets/projects/besafe2.png",
+        imgSrc: "./assets/projects/besafe2.png",
         description: `Final year B. Tech project, innovative solution addresses critical need for secure storage and access of data.
         Acts as a wrapper over google drive to store encrypted files, hash of file is stored in Ethereum blockchain.
         User can still use their existing drive whilst enjoying safeguarding of sensitive information.`,
@@ -10,14 +10,14 @@ const projectsData = [
     },
     {
         title: "Instantly: Instant Video Calling App",
-        imgSrc: "assets/projects/instantly.png",
+        imgSrc: "./assets/projects/instantly.png",
         description: `Users can create or join an instant meeting, without going through lengthy signing processes in times of urgency.Uses WebRTC for browser-to-browser connection, requiring server only for establishing connection.`,
         sourceCodeLink: "https://github.com/eissafaheem/instantly-video-calling-app",
         liveDemoLink: "https://github.com/eissafaheem/instantly-video-calling-app#instantly-video-calling-app"
     },
     {
         title: "Meow: Cats App",
-        imgSrc: "assets/projects/meow.png",
+        imgSrc: "./assets/projects/meow.png",
         description: `Developed as a fun way to display skills, users can unlock new cat avatars by collecting 'Paw-ints' by
         meowing in their conversations. Users can have a one to one as well as group chat, members can be added and removed from group.`,
         sourceCodeLink: "https://github.com/eissafaheem?tab=repositories&q=cats-app&type=&language=&sort=",
@@ -25,7 +25,7 @@ const projectsData = [
     },
     {
         title: "Autohunt",
-        imgSrc: "assets/projects/autohunt.png",
+        imgSrc: "./assets/projects/autohunt.png",
         description: "Autohunt is a car selling application which has a landing page, a search page, compare section, services provided, testimonials, about us and contact section. It is developed using React, typescript and css.",
         sourceCodeLink: "https://github.com/eissafaheem/autohunt_react_app",
         liveDemoLink: "https://github.com/eissafaheem/autohunt_react_app#autohunt"
