@@ -121,6 +121,10 @@ nav {
     font-weight: bolder;
 }
 
+.brand-name img{
+    height: 3rem;
+}
+
 .navigation {
     display: flex;
     gap: 2rem
@@ -262,8 +266,7 @@ section.contact h2 {
 }
 
 .contact-me {
-    display: flex;
-    gap: 2rem;
+
 }
 
 .contact a {
@@ -309,7 +312,7 @@ footer {
     border-top: 0.5rem solid transparent;
     border-bottom: 0.5rem solid transparent;
     background-color: transparent;
-    animation: flap 0.5s infinite;
+    /* animation: flap 0.5s infinite; */
 }
 
 .avatar {
@@ -342,6 +345,23 @@ footer {
     height: 10px;
     width: 10px;
     border-radius: 50%;
+}
+
+@keyframes flap {
+    0% {
+        border-top: 0.1rem solid transparent;
+        border-bottom: 0.1rem solid transparent;
+    }
+
+    50% {
+        border-top: 0.5rem solid transparent;
+        border-bottom: 0.5rem solid transparent;
+    }
+
+    100% {
+        border-top: 0.1rem solid transparent;
+        border-bottom: 0.1rem solid transparent;
+    }
 }
 
 @media screen and (max-width:700px) {
@@ -378,9 +398,7 @@ footer {
 
 
 @media screen and (max-width:900px) {
-    .contact-me {
-        flex-direction: column-reverse;
-    }
+
 
     nav {
         padding: 1rem;
