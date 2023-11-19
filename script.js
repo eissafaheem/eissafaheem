@@ -92,30 +92,36 @@ function openLink(url) {
 }
 
 function generateProjectCards() {
-    const projectGrid = document.querySelector('.card-grid');
+    const projectGrid = document.querySelector('.all-items');
 
     projectsData.forEach(project => {
         const card = document.createElement('div');
+        card.classList.add('item');
+
+        // Replace '\n' with '<br>' in the project description
+        const formattedDescription = project.description.replace(/\n/g, '<br>');
+
         card.innerHTML = `
-        <div class="card-container">
-                    <div class="card">
-                        <div class="projects-data">
-                            <img src="${project.imgSrc}" alt="${project.title}">
-                            <div class="project-info">
-                                <h3>${project.title}</h3>
-                                <p>${project.description}</p>
-                            </div>
-                        </div>
-                        <div class="links">
-                            <button onclick="openLink('${project.sourceCodeLink}')">Source Code</button>
-                            <button onclick="openLink('${project.liveDemoLink}')">Preview</button>
-                        </div>
+            <h3>${project.title}</h3>
+            <div class="item-data">
+                <div class="details">
+                    <div class="description">
+                        ${formattedDescription}
                     </div>
-                </div>`;
+                    <div class="links">
+                        <a href="${project.sourceCodeLink}" target="_blank"><img src="./assets/github-mark-dark.svg" alt="Github" title="Github"></a>
+                        <a href="${project.screenshotLink}" target="_blank"><img src="./assets/screenshot.svg" alt="Screenshots" title="Screenshots"></a>
+                        <a href="${project.liveDemoLink}" target="_blank"><img src="./assets/open-new-tab.svg" alt="Live" title="Live"></a>
+                    </div>
+                </div>
+                <img src="${project.imgSrc}" alt="">
+            </div>
+        `;
 
         projectGrid.appendChild(card);
     });
 }
+
 
 function sendEmail() {
     const to = "eissafaheem@gmail.com";
@@ -192,12 +198,11 @@ function toggleEyes() {
 
 const projectsData = [
     {
-        title: "BESAFE: Blockchain and Encryption for Secure Access to Files and Electronic Data",
+        title: "BESAFE: Blockchain and Encryption for Secure Access to Files \n and Electronic Data",
         imgSrc: "./assets/projects/besafe2.png",
-        description: `Final year B. Tech project, innovative solution addresses critical need for secure storage and access of data.
-        Acts as a wrapper over google drive to store encrypted files, hash of file is stored in Ethereum blockchain.
-        User can still use their existing drive whilst enjoying safeguarding of sensitive information.`,
+        description: `Final year B. Tech project, innovative solution addresses critical need for secure storage and access of data. Acts as a wrapper over google drive to store encrypted files, hash of file is stored in Ethereum blockchain. User can still use their existing drive whilst enjoying safeguarding of sensitive information.`,
         sourceCodeLink: "https://github.com/orgs/BeSafe-Org/repositories",
+        screenshotLink: "https://github.com/BeSafe-Org/besafe-angular#besafe-blockchain-and-encryption-for-secure-access-to-files-and-electronic-data",
         liveDemoLink: "https://github.com/BeSafe-Org/besafe-angular#besafe-blockchain-and-encryption-for-secure-access-to-files-and-electronic-data"
     },
     {
@@ -205,21 +210,23 @@ const projectsData = [
         imgSrc: "./assets/projects/instantly.png",
         description: `Users can create or join an instant meeting, without going through lengthy signing processes in times of urgency. Uses WebRTC for browser-to-browser connection, requiring server only for establishing connection.`,
         sourceCodeLink: "https://github.com/eissafaheem/instantly-video-calling-app",
-        liveDemoLink: "https://github.com/eissafaheem/instantly-video-calling-app#instantly-video-calling-app"
+        screenshotLink: "https://github.com/eissafaheem/instantly-video-calling-app#instantly-video-calling-app",
+        liveDemoLink: "https://instantly-video-calling.netlify.app/"
     },
     {
         title: "Meow: Realtime Chat Application",
         imgSrc: "./assets/projects/meow.png",
-        description: `Developed as a fun way to display skills, users can unlock new cat avatars by collecting 'Paw-ints' by
-        meowing in their conversations. Users can have a one to one as well as group chat, members can be added and removed from group.`,
+        description: `Developed as a fun way to display skills, users can unlock new cat avatars by collecting 'Paw-ints' by meowing their conversations. Users can have a one to one as well as group chat, members can be added and removed from group.`,
         sourceCodeLink: "https://github.com/eissafaheem?tab=repositories&q=cats-app&type=&language=&sort=",
-        liveDemoLink: "https://github.com/eissafaheem/cats-app-react#meow-realtime-chat-app-preview"
+        screenshotLink: "https://github.com/eissafaheem/cats-app-react#meow-realtime-chat-app-preview",
+        liveDemoLink: "https://cats-chat-app.netlify.app/"
     },
     {
         title: "Autohunt: Car Buying Application ",
         imgSrc: "./assets/projects/autohunt.png",
         description: "Autohunt is a car selling application which has a landing page, a search page, compare section, services provided, testimonials, about us and contact section. It is developed using React, typescript and css.",
         sourceCodeLink: "https://github.com/eissafaheem/autohunt_react_app",
+        screenshotLink: "https://github.com/eissafaheem/autohunt_react_app#autohunt",
         liveDemoLink: "https://github.com/eissafaheem/autohunt_react_app#autohunt"
     },
 ];
