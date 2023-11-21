@@ -12,6 +12,7 @@ const menuIcon = document.querySelector('.menu-icon');
 const closeIcon = document.querySelector('.close-icon');
 const navigation = document.querySelector('.navigation');
 
+
 window.addEventListener("mousemove", startEyeMovement);
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -92,8 +93,10 @@ function openLink(url) {
 }
 
 function generateExperienceCards() {
+    const experienceheading = document.querySelector('#experience-heading');
+    let exp = getTimestampDifference(Date.now(), experienceData[experienceData.length - 1].from)
+    experienceheading.innerText = `Experience ${exp} years`
     const experienceGrid = document.querySelector('#all-experience-items');
-    const currentDate = Date.now();
 
     experienceData.forEach(experience => {
         const card = document.createElement('div');
@@ -106,12 +109,12 @@ function generateExperienceCards() {
             toDate = "Present";
         }
 
-        const duration = getTimestampDifference(experience.to, experience.from);
+        // const duration = getTimestampDifference(experience.to, experience.from);
 
         card.innerHTML = `
             <h3>
                 <span>Ziroh Labs, ${experience.location}: ${experience.role}</span>
-                <span>${fromDate} to ${toDate}: ${duration} years</span>
+                <span>${fromDate} - ${toDate}</span>
             </h3>
             <div class="item-data">
                 <div class="details">
@@ -146,7 +149,6 @@ function generateProjectCards() {
         const card = document.createElement('div');
         card.classList.add('item');
 
-        // Split the description by '\n' and create a list
         const descriptionLines = project.description.split('\n');
         const formattedDescription = descriptionLines.length > 1 ?
             `<ul>${descriptionLines.map(line => `<li>${line}</li>`).join('')}</ul>` :
@@ -305,6 +307,16 @@ const experienceData = [
         location: "Bangalore",
         from: 1672511400000,
         to: Date.now(),
+        imgSrc: "./assets/projects/besafe2.png",
+        description: `Development of Zunu Social, an encrypted social media platform built using React and TypeScript. 
+        Currently working on Zunu Messages, an android mobile application for encrypted text messaging using React Native, TypeScript.
+        Skills used: React, TypeScript, React Native, Java, OOPS.`,
+    },
+    {
+        role: "Member of Technical Staff Intern",
+        location: "Bangalore",
+        from: 1656613800000,
+        to: 1672425000000,
         imgSrc: "./assets/projects/besafe2.png",
         description: `Development of Zunu Social, an encrypted social media platform built using React and TypeScript. 
         Currently working on Zunu Messages, an android mobile application for encrypted text messaging using React Native, TypeScript.
