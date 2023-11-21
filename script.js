@@ -91,15 +91,80 @@ function openLink(url) {
     window.open(url, "_blank");
 }
 
+function generateExperienceCards() {
+    const experienceGrid = document.querySelector('#all-experience-items');
+    const currentDate = Date.now();
+
+    experienceData.forEach(experience => {
+        const card = document.createElement('div');
+        card.classList.add('item');
+
+        const fromDate = getMonthYearFromTimestamp(experience.from);
+        let toDate = getMonthYearFromTimestamp(experience.to);
+        const nowDate = getMonthYearFromTimestamp(Date.now());
+        if (nowDate === toDate) {
+            toDate = "Present";
+        }
+
+        const duration = getTimestampDifference(experience.to, experience.from);
+
+        card.innerHTML = `
+            <h3>
+                <span>Ziroh Labs, ${experience.location}: ${experience.role}</span>
+                <span>${fromDate} to ${toDate}: ${duration} years</span>
+            </h3>
+            <div class="item-data">
+                <div class="details">
+                    <div class="description">
+                        ${experience.description}
+                    </div>
+                </div>
+                <img src="${experience.imgSrc}" alt="">
+            </div>
+        `;
+
+        experienceGrid.appendChild(card);
+    });
+}
+
+function getTimestampDifference(to, from) {
+    let difference = to - from;
+    let daysDifference = Math.floor(difference / 1000 / 60 / 60 / 24);
+    let years = (daysDifference / 365).toFixed(1);
+    return years;
+}
+
+function getMonthYearFromTimestamp(timestamp) {
+    const timestampObj = new Date(timestamp);
+    return `${timestampObj.toLocaleString('default', { month: 'short' })} ${timestampObj.getFullYear()}`;
+}
+
 function generateProjectCards() {
-    const projectGrid = document.querySelector('.all-items');
+    const projectGrid = document.querySelector('#all-project-items');
 
     projectsData.forEach(project => {
         const card = document.createElement('div');
         card.classList.add('item');
 
-        // Replace '\n' with '<br>' in the project description
-        const formattedDescription = project.description.replace(/\n/g, '<br>');
+        // Split the description by '\n' and create a list
+        const descriptionLines = project.description.split('\n');
+        const formattedDescription = descriptionLines.length > 1 ?
+            `<ul>${descriptionLines.map(line => `<li>${line}</li>`).join('')}</ul>` :
+            project.description;
+
+        let linksHTML = '';
+
+        if (project.sourceCodeLink) {
+            linksHTML += `<a href="${project.sourceCodeLink}" target="_blank"><img src="./assets/github-mark-dark.svg" alt="Github" title="Github"></a>`;
+        }
+
+        if (project.screenshotLink) {
+            linksHTML += `<a href="${project.screenshotLink}" target="_blank"><img src="./assets/screenshot.svg" alt="Screenshots" title="Screenshots"></a>`;
+        }
+
+        if (project.liveDemoLink) {
+            linksHTML += `<a href="${project.liveDemoLink}" target="_blank"><img src="./assets/open-new-tab.svg" alt="Live" title="Live"></a>`;
+        }
 
         card.innerHTML = `
             <h3>${project.title}</h3>
@@ -109,9 +174,7 @@ function generateProjectCards() {
                         ${formattedDescription}
                     </div>
                     <div class="links">
-                        <a href="${project.sourceCodeLink}" target="_blank"><img src="./assets/github-mark-dark.svg" alt="Github" title="Github"></a>
-                        <a href="${project.screenshotLink}" target="_blank"><img src="./assets/screenshot.svg" alt="Screenshots" title="Screenshots"></a>
-                        <a href="${project.liveDemoLink}" target="_blank"><img src="./assets/open-new-tab.svg" alt="Live" title="Live"></a>
+                        ${linksHTML}
                     </div>
                 </div>
                 <img src="${project.imgSrc}" alt="">
@@ -200,15 +263,18 @@ const projectsData = [
     {
         title: "BESAFE: Blockchain and Encryption for Secure Access to Files \n and Electronic Data",
         imgSrc: "./assets/projects/besafe2.png",
-        description: `Final year B. Tech project, innovative solution addresses critical need for secure storage and access of data. Acts as a wrapper over google drive to store encrypted files, hash of file is stored in Ethereum blockchain. User can still use their existing drive whilst enjoying safeguarding of sensitive information.`,
+        description: `Final year B. Tech project, innovative solution addresses critical need for secure storage and access of data. 
+        Acts as a wrapper over google drive to store encrypted files, hash of file is stored in Ethereum blockchain. 
+        User can still use their existing drive whilst enjoying safeguarding of sensitive information.`,
         sourceCodeLink: "https://github.com/orgs/BeSafe-Org/repositories",
         screenshotLink: "https://github.com/BeSafe-Org/besafe-angular#besafe-blockchain-and-encryption-for-secure-access-to-files-and-electronic-data",
-        liveDemoLink: "https://github.com/BeSafe-Org/besafe-angular#besafe-blockchain-and-encryption-for-secure-access-to-files-and-electronic-data"
+        // liveDemoLink: "https://github.com/BeSafe-Org/besafe-angular#besafe-blockchain-and-encryption-for-secure-access-to-files-and-electronic-data"
     },
     {
         title: "Instantly: Instant Video Calling App",
         imgSrc: "./assets/projects/instantly.png",
-        description: `Users can create or join an instant meeting, without going through lengthy signing processes in times of urgency. Uses WebRTC for browser-to-browser connection, requiring server only for establishing connection.`,
+        description: `Users can create or join an instant meeting, without going through lengthy signing processes in times of urgency.
+        Uses WebRTC for peer-to-peer connection, requiring server only for establishing connection.`,
         sourceCodeLink: "https://github.com/eissafaheem/instantly-video-calling-app",
         screenshotLink: "https://github.com/eissafaheem/instantly-video-calling-app#instantly-video-calling-app",
         liveDemoLink: "https://instantly-video-calling.netlify.app/"
@@ -216,7 +282,9 @@ const projectsData = [
     {
         title: "Meow: Realtime Chat Application",
         imgSrc: "./assets/projects/meow.png",
-        description: `Developed as a fun way to display skills, users can unlock new cat avatars by collecting 'Paw-ints' by meowing their conversations. Users can have a one to one as well as group chat, members can be added and removed from group.`,
+        description: `Developed as a fun way to display skills.
+        Users can unlock new cat avatars by collecting 'Paw-ints' by meowing their conversations. 
+        Users can have a one to one as well as group chat, members can be added and removed from group.`,
         sourceCodeLink: "https://github.com/eissafaheem?tab=repositories&q=cats-app&type=&language=&sort=",
         screenshotLink: "https://github.com/eissafaheem/cats-app-react#meow-realtime-chat-app-preview",
         liveDemoLink: "https://cats-chat-app.netlify.app/"
@@ -231,6 +299,20 @@ const projectsData = [
     },
 ];
 
+const experienceData = [
+    {
+        role: "Member of Technical Staff",
+        location: "Bangalore",
+        from: 1672511400000,
+        to: Date.now(),
+        imgSrc: "./assets/projects/besafe2.png",
+        description: `Development of Zunu Social, an encrypted social media platform built using React and TypeScript. 
+        Currently working on Zunu Messages, an android mobile application for encrypted text messaging using React Native, TypeScript.
+        Skills used: React, TypeScript, React Native, Java, OOPS.`,
+    }
+];
+
+generateExperienceCards();
 generateProjectCards();
 toggleEyes();
 applyTheme(currentTheme);
