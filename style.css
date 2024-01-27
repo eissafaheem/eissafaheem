@@ -9,7 +9,7 @@
 
     --font_color_dark: #ffffff;
     --app_background_color_dark: #000000;
-    --app_background_2_color_dark: #333333;
+    --app_background_2_color_dark: rgb(170, 169, 169);
     --app_border_color_dark: #CCCCCC;
     --shadow_dark: rgba(255, 255, 255, 0.26);
     --app_background_opacity_color-dark: #000000fa;
@@ -62,6 +62,7 @@ input {
 a {
     text-decoration: none;
     color: unset;
+    cursor: pointer;
 }
 
 a:hover {
@@ -150,7 +151,7 @@ section.home {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: calc(100vh - 5rem);
+    height: calc(100vh - 4rem);
     gap: 2rem;
     /* border: 2px solid red; */
 }
@@ -185,7 +186,7 @@ section.home img {
 .all-items .item .item-data {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 1rem;
+    grid-gap: 3rem;
 }
 
 .all-items .item .details {
@@ -222,6 +223,24 @@ section.home img {
     display: flex;
     justify-content: space-between;
 }
+
+.experience .item{
+    .image-slider{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .images-conatiner{
+            display: flex;
+            overflow: hidden;
+            gap: 1rem;    
+        }
+
+        .arrow{
+            width: 1 rem
+        }
+        
+    }
+} 
 
 
 section h2 {
@@ -354,6 +373,14 @@ footer {
 
     .all-items .item .item-data img {
         grid-row: 1;
+    }
+
+    .experience .item h3{
+        flex-direction: column;
+        .duration{
+            font-size: 0.8rem;
+            text-align: right;
+        }
     }
 }
 

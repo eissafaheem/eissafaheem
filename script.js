@@ -109,17 +109,22 @@ function generateExperienceCards() {
             toDate = "Present";
         }
 
+        const descriptionLines = experience.description.split('\n');
+        const formattedDescription = descriptionLines.length > 1 ?
+            `<ul>${descriptionLines.map(line => `<li>${line}</li>`).join('')}</ul>` :
+            project.description;
+
         // const duration = getTimestampDifference(experience.to, experience.from);
 
         card.innerHTML = `
             <h3>
-                <span>Ziroh Labs, ${experience.location}: ${experience.role}</span>
-                <span>${fromDate} - ${toDate}</span>
+                <a href="${experience.companyUrl}" target="_blank">${experience.conpanyName}, ${experience.location}: ${experience.role}</a>
+                <span class="duration">${fromDate} - ${toDate}</span>
             </h3>
             <div class="item-data">
                 <div class="details">
                     <div class="description">
-                        ${experience.description}
+                        ${formattedDescription}
                     </div>
                 </div>
                 <img src="${experience.imgSrc}" alt="">
@@ -263,7 +268,7 @@ function toggleEyes() {
 
 const projectsData = [
     {
-        title: "BESAFE: Blockchain and Encryption for Secure Access to Files \n and Electronic Data",
+        title: "Fullstack BESAFE: Blockchain and Encryption for Secure Access to Files \n and Electronic Data",
         imgSrc: "./assets/projects/besafe2.png",
         description: `Final year B. Tech project, innovative solution addresses critical need for secure storage and access of data. 
         Acts as a wrapper over google drive to store encrypted files, hash of file is stored in Ethereum blockchain. 
@@ -273,54 +278,66 @@ const projectsData = [
         // liveDemoLink: "https://github.com/BeSafe-Org/besafe-angular#besafe-blockchain-and-encryption-for-secure-access-to-files-and-electronic-data"
     },
     {
-        title: "Instantly: Instant Video Calling App",
+        title: "Fullstack Instantly: Instant Video Calling App",
         imgSrc: "./assets/projects/instantly.png",
-        description: `Users can create or join an instant meeting, without going through lengthy signing processes in times of urgency.
-        Uses WebRTC for peer-to-peer connection, requiring server only for establishing connection.`,
+            description: `Engineered an instant meeting platform prioritizing user convenience and urgency.
+            Seamless meeting creation and joining without cumbersome sign-up processes.
+            Utilized WebRTC for efficient peer-to-peer connections, reducing latency.
+            Minimized server dependency, leveraging it solely for WebRTC connection establishment.
+            Skills used: React, NodeJS, JavaScript Typescript, WebRTC.`,
         sourceCodeLink: "https://github.com/eissafaheem/instantly-video-calling-app",
         screenshotLink: "https://github.com/eissafaheem/instantly-video-calling-app#instantly-video-calling-app",
         liveDemoLink: "https://instantly-video-calling.netlify.app/"
     },
     {
-        title: "Meow: Realtime Chat Application",
+        title: "Fullstack Meow: Realtime Chat Application",
         imgSrc: "./assets/projects/meow.png",
-        description: `Developed as a fun way to display skills.
-        Users can unlock new cat avatars by collecting 'Paw-ints' by meowing their conversations. 
-        Users can have a one to one as well as group chat, members can be added and removed from group.`,
+        description: `Innovatively designed chat application to showcase skills with a playful twist.
+        Users unlock new cat avatars by earning 'Paw-ints' through meowing in conversations.
+        Implemented one-to-one and group chat functionalities for a dynamic user experience.
+        Skills used: React, NodeJS, MongoDB, JavaScript, TypeScript`,
         sourceCodeLink: "https://github.com/eissafaheem?tab=repositories&q=cats-app&type=&language=&sort=",
         screenshotLink: "https://github.com/eissafaheem/cats-app-react#meow-realtime-chat-app-preview",
         liveDemoLink: "https://cats-chat-app.netlify.app/"
     },
     {
-        title: "Autohunt: Car Buying Application ",
-        imgSrc: "./assets/projects/autohunt.png",
-        description: "Autohunt is a car selling application which has a landing page, a search page, compare section, services provided, testimonials, about us and contact section. It is developed using React, typescript and css.",
-        sourceCodeLink: "https://github.com/eissafaheem/autohunt_react_app",
-        screenshotLink: "https://github.com/eissafaheem/autohunt_react_app#autohunt",
-        liveDemoLink: "https://github.com/eissafaheem/autohunt_react_app#autohunt"
+        title: "Fullstack Draw Together: Shared Meeting Board for Teams",
+        imgSrc: "./assets/projects/draw-together.png",
+        description: `Developed a Fullstack Draw Together platform, fostering collaborative creativity.
+        Users initiate a shared meeting board by creating a room and sharing a unique code with their team.
+        Helps team members to collectively brainstorm and plan.
+        Real-time synchronization of doodles and ideas on the shared screen for all team members.`,
+        sourceCodeLink: "https://github.com/eissafaheem?tab=repositories&q=draw-together&type=&language=&sort=",
+        screenshotLink: "https://github.com/eissafaheem/draw-together-react?tab=readme-ov-file#create-or-join-a-drawing-room",
+        liveDemoLink: "https://cats-chat-app.netlify.app/"
     },
 ];
 
 const experienceData = [
     {
+        conpanyName:"Ziroh Labs",
+        companyUrl:"https://gozunu.com/",
         role: "Member of Technical Staff",
         location: "Bangalore",
         from: 1672511400000,
         to: Date.now(),
-        imgSrc: "./assets/projects/besafe2.png",
-        description: `Development of Zunu Social, an encrypted social media platform built using React and TypeScript. 
-        Currently working on Zunu Messages, an android mobile application for encrypted text messaging using React Native, TypeScript.
-        Skills used: React, TypeScript, React Native, Java, OOPS.`,
+        imgSrc: "./assets/projects/zunu-messages1.png",
+        description: `Working on Zunu Messages, ensures ultimate message privacy through device-to-device end-to-end encryption. Media files remain invisible to third-party apps in the gallery. 
+        SMS messages are secure from third-party apps with inbox access. Telecom providers can't access sent or received messages. 
+        Even in the event of a lost device or compromised password, message confidentiality remains intact.
+        Skills used: React Native, JavaScript, TypeScript, Java, OOPS.`,
     },
     {
+        conpanyName:"Ziroh Labs",
+        companyUrl:"https://gozunu.com/",
         role: "Member of Technical Staff Intern",
         location: "Bangalore",
         from: 1656613800000,
         to: 1672425000000,
-        imgSrc: "./assets/projects/besafe2.png",
-        description: `Development of Zunu Social, an encrypted social media platform built using React and TypeScript. 
-        Currently working on Zunu Messages, an android mobile application for encrypted text messaging using React Native, TypeScript.
-        Skills used: React, TypeScript, React Native, Java, OOPS.`,
+        imgSrc: "./assets/projects/ziroh-store.png",
+        description: `Contributed to the development of Ziroh Store, an encrypted file storage system, integrates with OneDrive, Google Drive, and Dropbox, serving as a secure interface over them, encrypting files before storing them on the respective cloud platforms, ensuring total privacy for users.
+        EnterPrize Vault, a robust administrative panel tailored for enterprises. This platform empowers enterprises to efficiently utilize Ziroh products while providing comprehensive tools to manage teams and members seamlessly.
+        Skills used: React, JavaScript, TypeScript.`,
     }
 ];
 
