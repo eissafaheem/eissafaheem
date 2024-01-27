@@ -33,6 +33,7 @@
 }
 
 body {
+    overflow-x: hidden;
     box-sizing: border-box;
     background-color: var(--app_background_color);
 }

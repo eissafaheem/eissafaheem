@@ -309,7 +309,7 @@ const projectsData = [
         Real-time synchronization of doodles and ideas on the shared screen for all team members.`,
         sourceCodeLink: "https://github.com/eissafaheem?tab=repositories&q=draw-together&type=&language=&sort=",
         screenshotLink: "https://github.com/eissafaheem/draw-together-react?tab=readme-ov-file#create-or-join-a-drawing-room",
-        liveDemoLink: "https://cats-chat-app.netlify.app/"
+        liveDemoLink: "https://draw-together.netlify.app/   "
     },
 ];
 
