@@ -143,8 +143,7 @@ nav {
 }
 
 .navigation a:hover {
-    box-shadow: 0 0 5px var(--app_background_2_color);
-    border-radius: var(--app_border_radius);
+    color: var(--app_border_color);
 }
 
 section.home {
