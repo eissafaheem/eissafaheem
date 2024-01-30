@@ -272,7 +272,8 @@ const projectsData = [
         imgSrc: "./assets/projects/besafe2.png",
         description: `Final year B. Tech project, innovative solution addresses critical need for secure storage and access of data. 
         Acts as a wrapper over google drive to store encrypted files, hash of file is stored in Ethereum blockchain. 
-        User can still use their existing drive whilst enjoying safeguarding of sensitive information.`,
+        User can still use their existing drive whilst enjoying safeguarding of sensitive information.
+        Skills Used: Angular, JavaScript, TypeScript, Java, Spring Boot, JDBC, Solidity`,
         sourceCodeLink: "https://github.com/orgs/BeSafe-Org/repositories",
         screenshotLink: "https://github.com/BeSafe-Org/besafe-angular#besafe-blockchain-and-encryption-for-secure-access-to-files-and-electronic-data",
         // liveDemoLink: "https://github.com/BeSafe-Org/besafe-angular#besafe-blockchain-and-encryption-for-secure-access-to-files-and-electronic-data"
@@ -306,7 +307,8 @@ const projectsData = [
         description: `Developed a Fullstack Draw Together platform, fostering collaborative creativity.
         Users initiate a shared meeting board by creating a room and sharing a unique code with their team.
         Helps team members to collectively brainstorm and plan.
-        Real-time synchronization of doodles and ideas on the shared screen for all team members.`,
+        Real-time synchronization of doodles and ideas on the shared screen for all team members.
+        Skills Used: React, JavaScript, TypeScript, NodeJS, SocketIO`,
         sourceCodeLink: "https://github.com/eissafaheem?tab=repositories&q=draw-together&type=&language=&sort=",
         screenshotLink: "https://github.com/eissafaheem/draw-together-react?tab=readme-ov-file#create-or-join-a-drawing-room",
         liveDemoLink: "https://draw-together.netlify.app/   "
