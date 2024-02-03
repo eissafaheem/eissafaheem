@@ -110,7 +110,7 @@ nav {
     position: sticky;
     top: 0;
     background-color: var(--app_background_color);
-    padding: 1rem 8rem;
+    padding: 1rem 8rem 0rem 8rem;
     z-index: 3;
 }
 
@@ -389,11 +389,11 @@ footer {
 
 
     nav {
-        padding: 1rem;
+        padding: 1rem 1rem 0rem 1rem;
     }
 
     .content {
-        padding: 1rem;
+        padding: 0rem 1rem;
     }
 }
 
